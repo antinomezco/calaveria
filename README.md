@@ -4,32 +4,14 @@ Simple recipe search website, inspired by The Skullery
 
 http://theskullery.net
 
-Uses Vue Router, Axios, lodash and dotenv.
+Uses Nuxt, Tailwind, Axios, Auth0, lodash and dotenv.
 
 Recipe database connection is through REST to a custom API created in Django.
 
-Features to add
+##Story
 
-1. CRUD
-  C) Pending
-  R) Can now click on a recipe to get its details
-  U) Pending
-  D) Pending
+You can search for available recipes by name, cuisine or type of meal
 
-## Project setup
-```
-npm install
-```
+Create an account
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Add/edit/delete recipes
