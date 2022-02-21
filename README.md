@@ -1,4 +1,4 @@
-# cookingscratch
+# La Calavería
 
 Simple recipe search website, inspired by The Skullery
 
