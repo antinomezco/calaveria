@@ -8,26 +8,25 @@
         style="background-image: url('https://images.unsplash.com/photo-1523986371872-9d3ba2e2a389?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c3VtbWVyJTIwZm9vZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80');"
       ></div>
       <div class="ui-container">
-        <div class="header">
-          <ul class="links-header">
+        <div class="flex justify-between p-5">
+          <img class="h-20" src="../assets/chef.png"/>
+          <ul class="h-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 ">
             <li v-if="!$auth.isAuthenticated" @click="login">Log in/Sign up</li>
             <li v-else @click="logout">Log out</li>
           </ul>
         </div>
-        <div class="main-hero">
-          <img class="hat" src="../assets/chef.png"/>
-          <div class="text-and-buttons">
-            <p class="title">
+        <div class="px-5 text-left text-white w-full sm:w-4/5 md:w-2/3 lg:w-1/2">
+          <div class="text-xl space-y-2">
+            <p class="text-3xl">
               La calavería
             </p>
             <p class="desc">
-              Inspired by <span><a href="http://www.theskullery.net">The Skullery</a></span>
+              Inspired by <span class="underline"><a href="http://www.theskullery.net">The Skullery</a></span>
               as to combine several of my passions, web development, photography and cooking.
             </p>
             <p class="desc">
               This is a website created to test my abilities as a web developer.
-              The frontend is made with VueJS without using any component
-              library, just CSS. In addition the following packages are used: firebase (for 
+              The frontend is made with VueJS using CSS and Tailwind. In addition the following packages are used: firebase (for 
               storing images), auth0 (for authentication), lodash (for its 
               debounce function), vee-validate (for forms), axios (to connect 
               to my own API) and vue-router (to navigate between different pages
@@ -37,15 +36,14 @@
               The backend was made from scratch using Django, custom made for this
               particular website.
             </p>
-            <p class="signature">
+            <p class="invert">
               <img
+                class="w-20"
                 src="../assets/quill-drawing-a-line.png"
-                height="75px"
-                width="75px"
               />
             </p>
-            <div>
-              <router-link to="/addrecipe" class="submit">
+            <div class="py-5">
+              <router-link to="/addrecipe" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 ">
                 Submit Recipe
               </router-link>
             </div>
@@ -78,9 +76,6 @@ export default {
 
 // Layered image and color transparency
 
-a
-  color: white
-
 .bg
   background-repeat: no-repeat
   background-attachment: center
@@ -101,91 +96,14 @@ a
   left: 0
   position: absolute
 
-// Header links
-.header
-  text-align: right
-  ul
-    color: white
-    padding: 0 1rem
-    font-size: 90%
-    margin: 1.6rem .5rem
-    display: flex
-    justify-content: flex-end
-    li
-      list-style-type: none
-      padding: 0 1rem
-      cursor: pointer
-      
-
-
 // Images and text in header
 
 .ui-container
   display: inline-block
-  width: 100%
+  // width: 100%
   position: relative
 
-.main-hero
-  display: flex
-  flex-direction: column
-  text-align: left
-  margin-top: -2rem
-  margin-bottom: 2rem
-  padding-left: 1rem
-  .hat
-    padding: 0 0 0 .5rem
-    height: 75px
-    width: 75px
-  .text-and-buttons
-    margin: 1.25rem 1rem
-    max-width: 600px
-    line-height: 1.5rem
-    .title
-      font-weight: 100
-      font-size: 2rem
-      // max-width: 25rem
-      line-height: 1.2
-      width: 100%
-      margin-top: 0
-      margin-bottom: 1rem
-      outline: 0
-      box-sizing: border-box
-    .title, .desc
-      color: white
-      text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000
-    .signature
-      -webkit-filter: invert(1)
-      filter: invert(1)
+p
+  text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000
 
-@media screen and (max-width: 1088px)
-  .main-hero
-    padding-left: 0
-
-// Buttons
-
-.submit
-  font-weight: 500
-  margin-top: .5rem
-  display: inline-block
-  color: black
-  background: linear-gradient(to bottom,#CCCC00 0,#999900 100%)
-
-.submit:hover
-  background: linear-gradient(to bottom,#999900 0,#666600 100%)
-
-.submit, .random
-  border-radius: 5px
-  text-decoration: none
-  padding: .75rem 2rem
-  font-weight: 500
-
-.random
-  margin-left: 1rem
-  border: 1px solid white
-  color: white
-  background: 0 0
-
-.random:hover
-  background: white
-  color: black
 </style>

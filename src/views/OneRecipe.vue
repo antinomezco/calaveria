@@ -1,93 +1,112 @@
 <template>
-  <div class="one-recipe-hero" v-if="loading">
+  <div class="" v-if="loading">
     <slot name="loading">
       <Spinner />
     </slot>
   </div>
-  <div v-else class="one-recipe-hero">
-    <div class="one-recipe-container">
-      <router-link to="/">
-        <img class="hat" src="../assets/chef.png" />
-      </router-link>
-      <div class="image-container">
-        <img :src="`${this.data.image}`" alt="" />
-      </div>
-      <div class="recipe-container">
-        <div class="recipe-title">
-          <h1>{{ this.data.recipe_name }}</h1>
+  <div v-else class="pt-3">
+    <div class="flex justify-center">
+      <div class="w-3/4">
+        <div
+          class="relative h-80 w-full object-cover rounded"
+          :style="{ 'background-image': 'url(' + this.data.image + ')', 'background-position' : 'center', 'background-size' : 'cover' }"
+          alt=""
+        >
+        <router-link to="/" class="absolute top-5 left-0 bg-clip-padding  rounded-r-lg shadow-lg bg-gray-200 pl-5 py-2 pr-2">
+          <img src="../assets/chef.png" class="h-16" />
+        </router-link>
         </div>
-        <hr />
-        <div class="recipe-minutia" v-if="!loading">
-          <div class="recipe-minutia-left">
-            <div class="category">
-              <span class="recipe-minutia-title">Category: </span
-              >{{ this.data.food_category.food_category_name }}
-            </div>
-            <div class="cuisine">
-              <span class="recipe-minutia-title">Cuisine: </span
-              >{{ this.data.cuisine.cuisine_name }}
-            </div>
-            <div class="added-by">
-              <span class="recipe-minutia-title">Added by: </span
-              >{{ this.data.first_name }}
-            </div>
+        <div class="">
+          <div class="">
+            <h1 class="text-4xl py-14 font-bold">
+              {{ this.data.recipe_name }}
+            </h1>
           </div>
-          <div class="recipe-minutia-right">
-            <div class="time">
-              <div >
-                <span class="recipe-minutia-title">Prep time:</span> {{ this.data.prep_time }}
+          <div class="w-full border-t border-gray-400"></div>
+          <div class="flex flex-row justify-between my-4" v-if="!loading">
+            <div class="text-left">
+              <div class="">
+                <span class="">Category: </span
+                >{{ this.data.food_category.food_category_name }}
               </div>
-              <div>
-                 <span class="recipe-minutia-title">Cook time:</span> {{ this.data.cook_time }}
+              <div class="">
+                <span class="">Cuisine: </span
+                >{{ this.data.cuisine.cuisine_name }}
+              </div>
+              <div class="">
+                <span class="">Added by: </span>{{ this.data.first_name }}
               </div>
             </div>
-            <div class="meal">
-              <span class="recipe-minutia-title">Meal: </span
-              >{{ this.data.course.course_name }}
+            <div class="text-right">
+              <div class="">
+                <div>
+                  <span class="">Prep time:</span> {{ this.data.prep_time }}
+                </div>
+                <div>
+                  <span class="">Cook time:</span> {{ this.data.cook_time }}
+                </div>
+              </div>
+              <div class="">
+                <span class="">Meal: </span>{{ this.data.course.course_name }}
+              </div>
             </div>
           </div>
-        </div>
-        <hr />
-        <div class="recipe-details">
-          <div class="recipe-ingredients-directions">
-            <!-- added v-if="!loading" to prevent v-for from trigerring an error 
+          <div class="w-full border-t border-gray-400"></div>
+          <div class="text-left pt-5">
+            <div class="grid grid-cols-12 ">
+              <!-- added v-if="!loading" to prevent v-for from trigerring an error 
             before there's any data to iterate -->
-            <div class="recipe-ingredients" v-if="!loading">
-              <p class="ingredients-title">
-                Ingredients for {{ data.servings }} servings
-              </p>
+              <div class="col-span-12 lg:col-span-6" v-if="!loading">
+                <div class="">
+                  <div
+                    class="block p-6 rounded-lg shadow-lg bg-yellow-50 "
+                  >
+                    <p class="text-yellow-600 font-bold text-2xl mb-2">
+                      Ingredients for {{ data.servings }} servings
+                    </p>
+                    <p
+                      v-for="(ing, index) in data.ingredients_text.split('\n')"
+                      :key="index"
+                      class="text-gray-700 text-xl text-base mb-1"
+                    >
+                      {{ ing }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-span-12 lg:col-span-6" v-if="!loading">
+                <div class=" ">
+                  <div
+                    class="block p-6"
+                  >
+                    <p class="text-red-600 font-bold text-2xl mb-2">Directions</p>
+                    <div
+                      v-for="(dir, index) in data.recipe_steps.split('\n')"
+                  :key="index"
+                      class="text-gray-700 text-xl text-base mb-1"
+                    >
+                      <div v-if="dir.trim()">{{ dir }}
+                        <div class="w-full border-t border-gray-300"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="" v-if="!loading">
+              <p class="text-red-600 font-bold text-2xl mb-2" v-if="data.recipe_notes.trim()">Notes</p>
               <p
-                v-for="(ing, index) in data.ingredients_text.split('\n')"
-                :key="index"
-                class="ingredients-text"
+                v-for="note in data.recipe_notes.split('\n')"
+                :key="note"
+                class="text-lg"
               >
-                {{ ing }}
+                {{note}}
               </p>
             </div>
-            <div class="recipe-directions" v-if="!loading">
-              <p class="directions-title">Directions</p>
-              <p
-                v-for="(dir, index) in data.recipe_steps.split('\n')"
-                :key="index"
-                class="recipe-steps"
-              >
-                {{ dir }}
-              </p>
-            </div>
-          </div>
-          <div class="recipe-notes" v-if="!loading">
-            <p class="notes-title" v-if="data.recipe_notes">Notes</p>
-            <p
-              v-for="note in data.recipe_notes.split('\n')"
-              :key="note"
-              class="notes-steps"
-            >
-              {{ note }}
-            </p>
           </div>
         </div>
+        <button @click="editPageGo" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center m-5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Edit Recipe</button>
       </div>
-      <button @click="editPageGo">Edit Recipe</button>
     </div>
   </div>
 </template>
@@ -133,119 +152,8 @@ export default {
   },
   methods: {
     editPageGo() {
-      this.$router.push("/recipe/edit/" + this.data.slug)
-    }
-  }
+      this.$router.push("/recipe/edit/" + this.data.slug);
+    },
+  },
 };
 </script>
-
-<style lang="sass" scoped>
-// .one-recipe-hero
-
-
-.one-recipe-container
-  padding: .5rem 2rem
-  max-width: 64em
-  margin-left: auto
-  margin-right: auto
-  font-family: Inter
-  line-height: 1.5
-
-a
-  position: absolute
-  top: 2rem // adds padding on the top
-  display: block //makes it align to the left
-  .hat
-    height: 75px
-    width: 75px
-    background: #efeeee
-    border-radius: 0 5px 5px 0
-    padding: .5rem .5rem .5rem 2rem
-    margin-right: auto
-
-.image-container
-  img
-    object-fit: cover
-    width: 100%
-    height: 300px
-    border-radius: 5px
-
-.recipe-title
-  margin: 2rem 0
-
-hr
-  margin: 1rem 0
-
-// .recipe-minutia
-
-.recipe-minutia-left
-  float: left
-  text-align: left
-
-.recipe-minutia-right
-  text-align: right
-
-.recipe-minutia-title
-  font-weight: 700
-
-.recipe-details
-  margin-top: 2rem 
-  text-align: left
-
-.recipe-ingredients-directions
-  display: flex
-
-.recipe-ingredients
-  background-color: #F3F1D6
-  padding: 1rem
-  border: 1px solid #F0F0F0
-  box-shadow: 0 2px 3px 0 rgba(0,0,0,.075)
-  width: 50%
-  cursor: default
-  .ingredients-title
-    color: #ba9d1cff
-    font-weight: 700
-
-.recipe-directions
-  padding: 1rem
-  width: 50%
-
-
-.directions-title, .notes-title
-  color: red
-  font-weight: 700
-
-.recipe-notes
-  padding: 1rem
-
-button
-  /* remove default button behavior */
-  appearance: none
-  -webkit-appearance: none
-
-  /* button styles */
-  padding: 10px
-  margin: 0 5px 1rem 5px
-  border: none
-  background-color: darkred
-  color: #fff
-  font-weight: 600
-  border-radius: 5px
-  width: 25%
-button[disabled]
-  background-color: gray
-  opacity: .30
-button:active
-  box-shadow: 0 5px gray
-  transform: translateY(2px)
-
-@media screen and (max-width: 760px)
-  .one-recipe-container
-    padding: .5rem
-  .recipe-ingredients-directions
-    flex-direction: column
-  .recipe-directions, .recipe-ingredients, .recipe-notes
-    padding: 1rem
-    width: 90%
-    margin: 0 auto
-</style>

@@ -10,6 +10,7 @@ import { Auth0Plugin } from "@/auth/auth0-plugin";
 import { ValidationProvider } from 'vee-validate/dist/vee-validate.full.esm';
 import { ValidationObserver} from 'vee-validate';
 import firebase from "firebase/app";
+import './main.css'
 
 import "firebase/storage";
 

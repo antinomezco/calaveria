@@ -1,7 +1,7 @@
 <template>
-  <div class="pagination-container">
-    <div class="input-container">
-      <input v-model="recipeName" placeholder="Search titles, ingredients or categories"/>
+  <div class="pt-3">
+    <div class="justify-center">
+      <input class="w-4/5 sm:3/4 md:w-2/3 lg:w-1/2 text-lg py-4 ring border-2 focus:ring-teal-500 focus:border-teal-500 border-teal-300 px-7 rounded-md" v-model="recipeName" placeholder="Search titles, ingredients or categories"/>
     </div>
     <!-- Sends recipeName string to the database through DataLoader to query for the total amount of items returned -->
     <DataLoader
@@ -72,29 +72,3 @@ export default {
   },
 };
 </script>
-
-<style lang="sass" scoped>
-.pagination-container
-  padding-top: 1rem
-
-.input-container
-  max-width: 50%
-  margin-left: auto
-  margin-right: auto
-  input
-    border-radius: 5px
-    border: 2px solid lightgray
-    margin: 0 auto
-    width: 80%
-    padding: 1rem
-    font-size: 1rem
-    text-overflow: ellipsis
-    overflow: hidden
-  input:focus
-    border: 2px solid red
-    outline: 0
-
-@media screen and (max-width: 1088px)
-  .input-container
-    max-width: 90%
-</style>
