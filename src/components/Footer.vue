@@ -5,26 +5,28 @@
         <div class="about space-y-2 md:pr-5 col-span-12 lg:col-span-8">
           <b class="text-xl">About</b>
           <p>
+            This is a website created to test my abilities as a web developer.
+            The frontend was initially made with VueJS without using any
+            component library, however for ease of responsiveness I added
+            Tailwind. In addition the following packages are used: dotenv (for
+            storing environmental variables), firebase (for storing images),
+            auth0 (for authentication, if account doesn't exist, it's
+            automatically generated), lodash (for its debounce function),
+            vee-validate (for forms), axios (to connect to my own API) and
+            vue-router (to navigate between different pages and for
+            authentication guard with auth0).
+          </p>
+          <p>
             This footer doesn't have any actual function, it just makes the
             website look better by having it. In addition, the links to the side
             don't actually work, they're currently placeholders to show how they
             could look. If needed, I could extend the functionality of the
             website to include such things, but this is just a simple show of a
-            CRUD website at the moment. For the next paragraph, I'll just repeat
-            whatever I put in the header:
-          </p>
-          <p>
-            This is a website created to test my abilities as a web developer.
-            The frontend is made made with VueJS without using any component
-            library, just CSS. In addition the following packages are used:
-            dotenv (for storing environmental variables), firebase (for storing
-            images), auth0 (for authentication), lodash (for its debounce
-            function), vee-validate (for forms), axios (to connect to my own
-            API) and vue-router (to navigate between different pages and for
-            authentication guard with auth0).
+            CRUD website at the moment.
           </p>
         </div>
-        <div class="flex flex-row grid col-span-12 grid-cols-2 lg:col-span-4 text-slate-100 gap-3 leading-snug"
+        <div
+          class="flex flex-row grid col-span-12 grid-cols-2 lg:col-span-4 text-slate-100 gap-3 leading-snug"
         >
           <div>
             <b class="text-xl">Links</b>
@@ -47,9 +49,7 @@
         </div>
       </div>
       <hr />
-      <div
-        class="text-slate-100 font-bold text-sm leading-snug grid-rows-1"
-      >
+      <div class="text-slate-100 font-bold text-sm leading-snug grid-rows-1">
         <p>
           Website design inspired by
           <a target="_blank" href="http://theskullery.net" class="underline"
@@ -69,7 +69,6 @@
 </template>
 
 <style lang="sass" scoped>
-
 //Main component css
 .footer
   border-top: solid 2px darkred
