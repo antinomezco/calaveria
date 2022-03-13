@@ -2,8 +2,6 @@ import Vue from 'vue';
 import VueCryptojs from 'vue-cryptojs'
 import App from './App.vue';
 import router from './router';
-import store from './store';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { domain, clientId, audience } from "../auth_config.json";
 import { Auth0Plugin } from "@/auth/auth0-plugin";
